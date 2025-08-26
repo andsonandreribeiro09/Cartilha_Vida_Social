@@ -43,29 +43,43 @@ async function baixarPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ unit: 'pt', format: 'a4' });
   const margin = 40;
-  const lineHeight = 16;
+  const lineHeight = 18;
+  const maxWidth = 515; // largura A4 menos margens
   let y = margin;
 
-  function addLine(text) {
-    const maxWidth = 515; // A4 width 595 - margins
+  const form = document.getElementById('form-avaliacao');
+  const labels = Array.from(form.querySelectorAll('label.field'));
+
+  function addText(text, options = {}) {
     const lines = doc.splitTextToSize(text, maxWidth);
     lines.forEach(line => {
-      if (y > 800) { doc.addPage(); y = margin; }
+      if (y > 780) { // quebrar página antes do final
+        doc.addPage();
+        y = margin;
+      }
+      doc.setFont(undefined, options.bold ? 'bold' : 'normal');
       doc.text(line, margin, y);
       y += lineHeight;
     });
   }
 
-  addLine('Avaliação — Cartilha Vida Social');
-  addLine('');
-  const data = obterDados();
-  Object.keys(data).sort((a,b)=>{
-    // numeric sort on x.y
-    const pa = a.split('.').map(Number); const pb = b.split('.').map(Number);
-    return (pa[0]-pb[0]) || (pa[1]-pb[1]||0);
-  }).forEach(key => {
-    addLine(`${key}: ${data[key]}`);
+  addText('Avaliação — Cartilha Vida Social', { bold: true });
+  addText('');
+
+  labels.forEach(label => {
+    const pergunta = label.querySelector('span')?.textContent || '';
+    const input = label.querySelector('input, textarea');
+    const resposta = input ? input.value : '';
+    addText(pergunta, { bold: true });
+    addText(`Resposta: ${resposta}`);
+    addText(''); // linha em branco entre perguntas
   });
 
   doc.save('avaliacao_cartilha.pdf');
 }
+
+// Carregar dados salvos automaticamente ao abrir
+window.addEventListener('DOMContentLoaded', () => {
+  carregarLocal();
+});
+
