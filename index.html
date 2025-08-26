@@ -42,7 +42,17 @@
         <li>Abra a <strong>Cartilha</strong> para leitura online.</li>
         <li>Vá em <strong>Preencher Avaliação</strong> e complete os campos.</li>
         <li>Clique em <strong>Baixar PDF</strong> para gerar seu relatório.</li>
+        <li>Chat com IA: faça perguntas sobre a cartilha.</li>
       </ol>
+    </section>
+
+    <section class="mt-10 max-w-4xl mx-auto px-4 pb-20">
+      <h3 class="text-lg font-semibold">💬 Chat com IA</h3>
+      <div class="mt-4 flex flex-col gap-2">
+        <textarea id="pergunta" class="border rounded p-2 w-full" rows="3" placeholder="Faça sua pergunta..."></textarea>
+        <button id="enviar" class="bg-indigo-700 text-white px-4 py-2 rounded w-32">Enviar</button>
+      </div>
+      <div id="resposta" class="mt-4 p-4 border rounded bg-white text-slate-800 min-h-[100px]"></div>
     </section>
   </main>
 
@@ -51,5 +61,8 @@
       Projeto aberto em <a href="#" class="link">GitHub Pages</a>.
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
