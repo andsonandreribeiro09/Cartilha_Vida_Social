@@ -8,7 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-800">
-  <header class="max-w-5xl mx-auto px-4 py-6 flex items-center justify-between">
+  <header class="max-w-6xl mx-auto px-4 py-6 flex items-center justify-between">
     <div>
       <h1 class="text-2xl font-bold">Formulário de Avaliação</h1>
       <p class="text-slate-600">Preencha os campos abaixo e clique em <strong>Enviar Avaliação</strong>.</p>
@@ -16,7 +16,7 @@
     <a href="index.html" class="btn">← Início</a>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4 pb-24">
+  <main class="max-w-6xl mx-auto px-4 pb-24">
     <form id="form-avaliacao" 
           action="https://formspree.io/f/mandnwkv" 
           method="POST" 
@@ -30,50 +30,78 @@
           <label class="field">
             <span>Nome</span>
             <input type="text" name="avaliador_nome" required />
-            <p class="erro-msg hidden text-red-600 text-sm">Informe seu nome</p>
           </label>
           <label class="field">
             <span>Email</span>
             <input type="email" name="avaliador_email" required />
-            <p class="erro-msg hidden text-red-600 text-sm">Informe um e-mail válido</p>
           </label>
         </div>
       </section>
 
-      <!-- SEÇÃO 1 — CARTILHA DIGITAL -->
+      <!-- SEÇÃO 1 — IDENTIFICAÇÃO -->
       <section class="card p-6">
-        <h2 class="text-xl font-semibold mb-4">1 — Cartilha Digital</h2>
+        <h2 class="text-xl font-semibold mb-4">1 — Identificação (O QUE É)</h2>
         <div class="grid md:grid-cols-2 gap-4">
-          <label class="field"><span>1.1 Nome</span><input name="1.1" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
-          <label class="field"><span>1.2 Site</span><input name="1.2" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
+          <label class="field">
+            <span>Nome da Cartilha</span>
+            <input name="1.1_nome" value="Cartilha_Vida_Social" readonly />
+          </label>
+          <label class="field">
+            <span>Link</span>
+            <input name="1.2_link" value="https://gimaculadaconceicao.wixsite.com/gepic" readonly />
+          </label>
         </div>
-        <label class="field mt-4"><span>1.3 Descrição</span><textarea name="1.3" required></textarea><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
+        <label class="field mt-4"><span>Descrição</span><textarea name="1.3_descricao" required></textarea></label>
         <div class="grid md:grid-cols-2 gap-4 mt-4">
-          <label class="field"><span>1.4 Páginas</span><input name="1.4" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
-          <label class="field"><span>1.5 Temáticas</span><input name="1.5" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
+          <label class="field"><span>Páginas</span><input name="1.4_paginas" required /></label>
+          <label class="field"><span>Conteúdo / Temáticas</span><input name="1.5_conteudo" required /></label>
         </div>
+        <div class="grid md:grid-cols-2 gap-4 mt-4">
+          <label class="field"><span>Público-alvo</span><input name="1.6_publico" required /></label>
+          <label class="field"><span>Metodologia</span><input name="1.7_metodologia" required /></label>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4 mt-4">
+          <label class="field"><span>Objetivos</span><input name="1.8_objetivos" required /></label>
+          <label class="field"><span>Relevância</span><input name="1.9_relevancia" required /></label>
+        </div>
+        <label class="field mt-4"><span>Links internos/externos</span><input name="1.10_links" required /></label>
+        <label class="field mt-4"><span>Site hospedeiro</span><input name="1.11_site_hospedeiro" required /></label>
       </section>
 
       <!-- SEÇÃO 2 — DIMENSÃO TÉCNICA -->
       <section class="card p-6">
-        <h2 class="text-xl font-semibold mb-4">2 — Dimensão Técnica</h2>
+        <h2 class="text-xl font-semibold mb-4">2 — Técnica (COMO FUNCIONA)</h2>
         <div class="grid md:grid-cols-2 gap-4">
-          <label class="field"><span>2.1 Interface</span><input name="2.1" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
-          <label class="field"><span>2.2 Formato</span><input name="2.2" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
-          <label class="field"><span>2.3 Leitor</span><input name="2.3" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
-          <label class="field"><span>2.4 Configuração</span><input name="2.4" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
+          <label class="field"><span>Interface / Metodologia</span><input name="2.1_interface" required /></label>
+          <label class="field"><span>Formato</span><input name="2.2_formato" required /></label>
+          <label class="field"><span>Software necessário</span><input name="2.3_software" required /></label>
+          <label class="field"><span>Configuração</span><input name="2.4_configuracao" required /></label>
         </div>
+        <label class="field mt-4"><span>Recursos (som, imagem, outros)</span><input name="2.5_recursos" required /></label>
+        <label class="field mt-4"><span>Qualidade técnica (som, imagem, tempo, ritmo)</span><textarea name="2.6_qualidade" required></textarea></label>
+        <label class="field mt-4"><span>Erros encontrados</span><textarea name="2.7_erros"></textarea></label>
       </section>
 
-      <!-- SEÇÃO 3 — DIMENSÃO DIDÁTICO-PEDAGÓGICA -->
+      <!-- SEÇÃO 3 — DIDÁTICO-PEDAGÓGICA -->
       <section class="card p-6">
-        <h2 class="text-xl font-semibold mb-4">3 — Dimensão Didático-Pedagógica</h2>
+        <h2 class="text-xl font-semibold mb-4">3 — Didático-Pedagógica (PARA QUÊ SERVE)</h2>
         <div class="grid md:grid-cols-2 gap-4">
-          <label class="field"><span>3.1 Objetivo</span><input name="3.1" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
-          <label class="field"><span>3.2 Concepção pedagógica</span><input name="3.2" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
-          <label class="field"><span>3.3 Fundamentos filosóficos</span><input name="3.3" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
-          <label class="field"><span>3.4 Concepção filosófica</span><input name="3.4" required /><p class="erro-msg hidden text-red-600 text-sm">Campo obrigatório</p></label>
+          <label class="field"><span>Objetivo pedagógico</span><input name="3.1_objetivo" required /></label>
+          <label class="field"><span>Concepção pedagógica</span><input name="3.2_concepcao" required /></label>
+          <label class="field"><span>Fundamentos filosóficos</span><input name="3.3_filosoficos" required /></label>
+          <label class="field"><span>Concepção epistemológica</span><input name="3.4_epistemologica" required /></label>
         </div>
+        <label class="field mt-4"><span>Objetivos de aprendizagem</span><input name="3.5_aprendizagem" required /></label>
+        <label class="field mt-4"><span>Cidadania</span><input name="3.6_cidadania" required /></label>
+        <label class="field mt-4"><span>Contexto sociopolítico</span><input name="3.7_contexto" required /></label>
+        <label class="field mt-4"><span>Sequência de estudo</span><input name="3.8_sequencia" required /></label>
+        <label class="field mt-4"><span>Aprender a conhecer/fazer/conviver/ser</span><textarea name="3.9_aprender" required></textarea></label>
+        <label class="field mt-4"><span>Estratégias didáticas</span><input name="3.10_estrategias" required /></label>
+        <label class="field mt-4"><span>Dinâmicas/lúdicas/HQs</span><input name="3.11_dinamicas" required /></label>
+        <label class="field mt-4"><span>Construção de conceitos</span><input name="3.12_conceitos" required /></label>
+        <label class="field mt-4"><span>Motivação</span><input name="3.13_motivacao" required /></label>
+        <label class="field mt-4"><span>Aspectos positivos</span><textarea name="3.14_aspectos" required></textarea></label>
+        <label class="field mt-4"><span>Ideias ponte</span><input name="3.15_ideias" required /></label>
       </section>
 
       <!-- BOTÕES -->
